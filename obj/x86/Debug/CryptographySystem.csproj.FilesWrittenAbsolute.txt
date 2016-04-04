@@ -1,0 +1,6 @@
+/home/kholby/CryptographySystem/CryptographySystem/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/kholby/CryptographySystem/CryptographySystem/obj/x86/Debug/CryptographySystem.gtk-gui.gui.stetic
+/home/kholby/CryptographySystem/CryptographySystem/bin/Debug/CryptographySystem.exe.mdb
+/home/kholby/CryptographySystem/CryptographySystem/bin/Debug/CryptographySystem.exe
+/home/kholby/CryptographySystem/CryptographySystem/obj/x86/Debug/CryptographySystem.exe
+/home/kholby/CryptographySystem/CryptographySystem/obj/x86/Debug/CryptographySystem.exe.mdb
