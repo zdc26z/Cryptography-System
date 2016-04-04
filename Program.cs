@@ -146,7 +146,7 @@ namespace CryptographySystem
 
 		// Encrypt a file into another file using a password 
 		public static void Encrypt(string fileIn, 
-			string fileOut, string Password) 
+			string fileOut, string Password, string Algorithm) 
 		{ 
 
 			// First we are going to open the file streams 
@@ -322,7 +322,7 @@ namespace CryptographySystem
 
 		// Decrypt a file into another file using a password 
 		public static void Decrypt(string fileIn, 
-			string fileOut, string Password) 
+			string fileOut, string Password, string Algorithm) 
 		{ 
 
 			// First we are going to open the file streams 

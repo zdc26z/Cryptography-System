@@ -1,5 +1,6 @@
 ﻿using System;
 using Gtk;
+using CryptographySystem;
 
 public partial class MainWindow: Gtk.Window
 {
@@ -48,5 +49,40 @@ public partial class MainWindow: Gtk.Window
 		}
 
 		filechooser.Destroy();
+	}
+
+	protected void doEncryption (object sender, EventArgs e)
+	{
+		//TODO:  handle empty fields
+		String algorithm = "";
+		GLib.SList radios = DES.Group;
+		foreach (RadioButton radio in radios) {
+			if (radio.Active) {
+				algorithm = radio.Name;
+				break;
+			}
+		}
+		String inFile = inputFileEntry.Text;
+		String outFile = outputFileEntry.Text;
+		String pword = passwordEntry.Text;
+		EncDec.Encrypt (inFile, outFile, pword, algorithm);
+	}
+
+	protected void doDecryption (object sender, EventArgs e)
+	{
+		//TODO:  handle empty fields
+		//crashes if password is wrong
+		String algorithm = "";
+		GLib.SList radios = DES.Group;
+		foreach (RadioButton radio in radios) {
+			if (radio.Active) {
+				algorithm = radio.Name;
+				break;
+			}
+		}
+		String inFile = inputFileEntry.Text;
+		String outFile = outputFileEntry.Text;
+		String pword = passwordEntry.Text;
+		EncDec.Decrypt (inFile, outFile, pword, algorithm);
 	}
 }

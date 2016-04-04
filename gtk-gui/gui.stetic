@@ -189,6 +189,7 @@
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">_ENCRYPT</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="doEncryption" />
                   </widget>
                   <packing>
                     <property name="Expand">False</property>
@@ -202,6 +203,7 @@
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">_DECRYPT</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="doDecryption" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -363,7 +365,7 @@
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
                         <child>
-                          <widget class="Gtk.RadioButton" id="des">
+                          <widget class="Gtk.RadioButton" id="DES">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="Label" translatable="yes">DES</property>
@@ -380,7 +382,7 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.RadioButton" id="rc2">
+                          <widget class="Gtk.RadioButton" id="RC2">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="Label" translatable="yes">RC2</property>
@@ -396,7 +398,7 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.RadioButton" id="rijndael">
+                          <widget class="Gtk.RadioButton" id="Rijndael">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="Label" translatable="yes">Rijndael</property>
@@ -412,7 +414,7 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.RadioButton" id="threedes">
+                          <widget class="Gtk.RadioButton" id="TripleDES">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="Label" translatable="yes">TripleDES</property>

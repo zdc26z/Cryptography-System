@@ -73,13 +73,13 @@ public partial class MainWindow
 	
 	private global::Gtk.HBox hbox4;
 	
-	private global::Gtk.RadioButton des;
+	private global::Gtk.RadioButton DES;
 	
-	private global::Gtk.RadioButton rc2;
+	private global::Gtk.RadioButton RC2;
 	
-	private global::Gtk.RadioButton rijndael;
+	private global::Gtk.RadioButton Rijndael;
 	
-	private global::Gtk.RadioButton threedes;
+	private global::Gtk.RadioButton TripleDES;
 	
 	private global::Gtk.Label GtkLabel8;
 	
@@ -345,48 +345,48 @@ public partial class MainWindow
 		this.hbox4.Name = "hbox4";
 		this.hbox4.Spacing = 6;
 		// Container child hbox4.Gtk.Box+BoxChild
-		this.des = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("DES"));
-		this.des.CanFocus = true;
-		this.des.Name = "des";
-		this.des.DrawIndicator = true;
-		this.des.UseUnderline = true;
-		this.des.BorderWidth = ((uint)(6));
-		this.des.Group = new global::GLib.SList (global::System.IntPtr.Zero);
-		this.hbox4.Add (this.des);
-		global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.des]));
+		this.DES = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("DES"));
+		this.DES.CanFocus = true;
+		this.DES.Name = "DES";
+		this.DES.DrawIndicator = true;
+		this.DES.UseUnderline = true;
+		this.DES.BorderWidth = ((uint)(6));
+		this.DES.Group = new global::GLib.SList (global::System.IntPtr.Zero);
+		this.hbox4.Add (this.DES);
+		global::Gtk.Box.BoxChild w22 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.DES]));
 		w22.Position = 0;
 		// Container child hbox4.Gtk.Box+BoxChild
-		this.rc2 = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("RC2"));
-		this.rc2.CanFocus = true;
-		this.rc2.Name = "rc2";
-		this.rc2.DrawIndicator = true;
-		this.rc2.UseUnderline = true;
-		this.rc2.BorderWidth = ((uint)(6));
-		this.rc2.Group = this.des.Group;
-		this.hbox4.Add (this.rc2);
-		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.rc2]));
+		this.RC2 = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("RC2"));
+		this.RC2.CanFocus = true;
+		this.RC2.Name = "RC2";
+		this.RC2.DrawIndicator = true;
+		this.RC2.UseUnderline = true;
+		this.RC2.BorderWidth = ((uint)(6));
+		this.RC2.Group = this.DES.Group;
+		this.hbox4.Add (this.RC2);
+		global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.RC2]));
 		w23.Position = 1;
 		// Container child hbox4.Gtk.Box+BoxChild
-		this.rijndael = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("Rijndael"));
-		this.rijndael.CanFocus = true;
-		this.rijndael.Name = "rijndael";
-		this.rijndael.DrawIndicator = true;
-		this.rijndael.UseUnderline = true;
-		this.rijndael.BorderWidth = ((uint)(6));
-		this.rijndael.Group = this.des.Group;
-		this.hbox4.Add (this.rijndael);
-		global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.rijndael]));
+		this.Rijndael = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("Rijndael"));
+		this.Rijndael.CanFocus = true;
+		this.Rijndael.Name = "Rijndael";
+		this.Rijndael.DrawIndicator = true;
+		this.Rijndael.UseUnderline = true;
+		this.Rijndael.BorderWidth = ((uint)(6));
+		this.Rijndael.Group = this.DES.Group;
+		this.hbox4.Add (this.Rijndael);
+		global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.Rijndael]));
 		w24.Position = 2;
 		// Container child hbox4.Gtk.Box+BoxChild
-		this.threedes = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("TripleDES"));
-		this.threedes.CanFocus = true;
-		this.threedes.Name = "threedes";
-		this.threedes.DrawIndicator = true;
-		this.threedes.UseUnderline = true;
-		this.threedes.BorderWidth = ((uint)(6));
-		this.threedes.Group = this.des.Group;
-		this.hbox4.Add (this.threedes);
-		global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.threedes]));
+		this.TripleDES = new global::Gtk.RadioButton (global::Mono.Unix.Catalog.GetString ("TripleDES"));
+		this.TripleDES.CanFocus = true;
+		this.TripleDES.Name = "TripleDES";
+		this.TripleDES.DrawIndicator = true;
+		this.TripleDES.UseUnderline = true;
+		this.TripleDES.BorderWidth = ((uint)(6));
+		this.TripleDES.Group = this.DES.Group;
+		this.hbox4.Add (this.TripleDES);
+		global::Gtk.Box.BoxChild w25 = ((global::Gtk.Box.BoxChild)(this.hbox4 [this.TripleDES]));
 		w25.Position = 3;
 		this.GtkAlignment.Add (this.hbox4);
 		this.frame1.Add (this.GtkAlignment);
@@ -487,6 +487,8 @@ public partial class MainWindow
 		this.ExitAction.Activated += new global::System.EventHandler (this.bye);
 		this.inputFileButton.Clicked += new global::System.EventHandler (this.openFile);
 		this.outputFileButton.Clicked += new global::System.EventHandler (this.openFile);
+		this.encryptButton.Clicked += new global::System.EventHandler (this.doEncryption);
+		this.decryptButton.Clicked += new global::System.EventHandler (this.doDecryption);
 		this.exitButton.Activated += new global::System.EventHandler (this.bye);
 		this.exitButton.Clicked += new global::System.EventHandler (this.bye);
 	}
