@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Threading;
 using Gtk;
 using CryptographySystem;
 
 public partial class MainWindow: Gtk.Window
 {
+	private bool processing = false;
+
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
@@ -16,6 +19,9 @@ public partial class MainWindow: Gtk.Window
 	}
 	protected void bye (object sender, EventArgs e)
 	{
+		if (processing) {
+			//alert that a job is being processed, are you sure you want to proceed?
+		}
 		Application.Quit ();
 	}
 
@@ -53,36 +59,78 @@ public partial class MainWindow: Gtk.Window
 
 	protected void doEncryption (object sender, EventArgs e)
 	{
-		//TODO:  handle empty fields
-		String algorithm = "";
-		GLib.SList radios = DES.Group;
-		foreach (RadioButton radio in radios) {
-			if (radio.Active) {
-				algorithm = radio.Name;
-				break;
+		if (!processing) {
+			processing = true;
+			//TODO:  handle empty fields
+			String algorithm = "";
+			GLib.SList radios = DES.Group;
+			foreach (RadioButton radio in radios) {
+				if (radio.Active) {
+					algorithm = radio.Name;
+					break;
+				}
 			}
+			String inFile = inputFileEntry.Text;
+			String outFile = outputFileEntry.Text;
+			String pword = passwordEntry.Text;
+			Thread encryption = new Thread (delegate () {
+				EncDec.Encrypt (inFile, outFile, pword, algorithm, this);
+			});
+			encryption.Start ();
 		}
-		String inFile = inputFileEntry.Text;
-		String outFile = outputFileEntry.Text;
-		String pword = passwordEntry.Text;
-		EncDec.Encrypt (inFile, outFile, pword, algorithm);
 	}
 
 	protected void doDecryption (object sender, EventArgs e)
 	{
-		//TODO:  handle empty fields
-		//crashes if password is wrong
-		String algorithm = "";
-		GLib.SList radios = DES.Group;
-		foreach (RadioButton radio in radios) {
-			if (radio.Active) {
-				algorithm = radio.Name;
-				break;
+		if (!processing) {
+			//TODO:  handle empty fields
+			//crashes if password is wrong
+			String algorithm = "";
+			GLib.SList radios = DES.Group;
+			foreach (RadioButton radio in radios) {
+				if (radio.Active) {
+					algorithm = radio.Name;
+					break;
+				}
 			}
+			String inFile = inputFileEntry.Text;
+			String outFile = outputFileEntry.Text;
+			String pword = passwordEntry.Text;
+			Thread decryption = new Thread (delegate() {
+				EncDec.Decrypt (inFile, outFile, pword, algorithm, this);
+			});
+			decryption.Start ();
 		}
-		String inFile = inputFileEntry.Text;
-		String outFile = outputFileEntry.Text;
-		String pword = passwordEntry.Text;
-		EncDec.Decrypt (inFile, outFile, pword, algorithm);
+	}
+
+	public void updateProgress(double progress) {
+		progressbar1.Fraction = progress;
+		this.QueueDraw ();
+	}
+
+	public void doneProcessing() {
+		processing = false;
+	}
+
+	protected void doDigest (object sender, EventArgs e)
+	{
+		if (!processing) {
+			processing = true;
+			//TODO:  handle empty fields
+			String algorithm = "";
+			GLib.SList radios = md5.Group;
+			foreach (RadioButton radio in radios) {
+				if (radio.Active) {
+					algorithm = radio.Name;
+					break;
+				}
+			}
+			String inFile = inputFileEntry.Text;
+			String outFile = outputFileEntry.Text;
+			Thread digestion = new Thread (delegate() {
+				EncDec.Digest (inFile, outFile, algorithm, this);
+			});
+			digestion.Start ();
+		}	
 	}
 }

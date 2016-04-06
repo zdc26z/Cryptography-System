@@ -489,6 +489,7 @@ public partial class MainWindow
 		this.outputFileButton.Clicked += new global::System.EventHandler (this.openFile);
 		this.encryptButton.Clicked += new global::System.EventHandler (this.doEncryption);
 		this.decryptButton.Clicked += new global::System.EventHandler (this.doDecryption);
+		this.digestButton.Clicked += new global::System.EventHandler (this.doDigest);
 		this.exitButton.Activated += new global::System.EventHandler (this.bye);
 		this.exitButton.Clicked += new global::System.EventHandler (this.bye);
 	}

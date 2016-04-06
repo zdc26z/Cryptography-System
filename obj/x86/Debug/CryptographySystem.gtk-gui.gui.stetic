@@ -189,7 +189,7 @@
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">_ENCRYPT</property>
                     <property name="UseUnderline">True</property>
-                    <signal name="Clicked" handler="doEncryption" />
+                    <signal name="Clicked" handler="doEncryption" after="yes" />
                   </widget>
                   <packing>
                     <property name="Expand">False</property>
@@ -218,6 +218,7 @@
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">DI_GEST</property>
                     <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="doDigest" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
